@@ -1,0 +1,63 @@
+/* VARIABLES & FONTS */
+:root {
+    --text-color: #5D4037;
+    --pale: #FFFFFF80;
+    --cream: #FFF9FB;
+    --nude-pink: #fabdd1;
+    --dusty-rose: #F06292;
+    --dark-rose: #C2185B;
+}
+
+/* BASE LAYOUT */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--nude-pink);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+/* HEADER */
+header {
+    background-color: var(--pale);
+    padding: 20px 0;
+    width: 100%;
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.logo {
+    color: var(--dark-rose);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 20px;
+    margin: 145px auto 100px;
+}
+
+#start-btn {
+    background-color: var(--dusty-rose);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
