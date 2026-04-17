@@ -12,11 +12,25 @@
         <div class="logo">The Baking Quiz</div>
     </header>
 
-    <main class="hero">
-        <h1>What pastry are you going to bake today?</h1>
-        <p>Answer a few questions, and find your perfect pastry match!</p>
-        <button id="start-btn">Start the Quiz</button>
+    <main>
+        <section id="hero" class="hero">
+            <h1>What pastry are you going to bake today?</h1>
+            <p>Answer a few questions, and find your perfect pastry match!</p>
+            <button id="start-btn">Start the Quiz</button>
+        </section>
+
+        <section id="quiz" class="quiz hidden">
+            <div class="quiz-card">
+                <h2 id="question-text">How much time do you have?</h2>
+                <div class="options">
+                    <button class="option-btn">Less than 30 minutes</button>
+                    <button class="option-btn">Less than 1 hour</button>
+                    <button class="option-btn">All the time in the world</button>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
