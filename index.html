@@ -19,13 +19,27 @@
             <button id="start-btn">Start the Quiz</button>
         </section>
 
-        <section id="quiz" class="quiz hidden">
+        <section id="quiz" class="container hidden">
             <div class="quiz-card">
                 <h2 id="question-text">How much time do you have?</h2>
                 <div class="options">
                     <button class="option-btn">Less than 30 minutes</button>
                     <button class="option-btn">Less than 1 hour</button>
                     <button class="option-btn">All the time in the world</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="container hidden">
+            <h2>Your Result...</h2>
+            <div class="results-grid">
+                <div class="card">
+                    <div class="img-container">
+                        <img id="result-img" src="images/cookie.jpg" alt="Cookies" style="width: 100%; height: auto; border-radius: 8px;">
+                    </div>
+                    <h3 id="result-title">Cookies</h3>
+                    <p id="result-match">Match: 95%</p>
+                    <button id="recipe-btn" class="recipe-btn">View Recipe</button>
                 </div>
             </div>
         </section>

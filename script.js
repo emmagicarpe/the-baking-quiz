@@ -63,5 +63,59 @@ function handleOptionClick(answer)
 
 function showResults()
 {
+    // Hide previous section and display the result
     document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('results').classList.remove('hidden');
+
+    const results = calculateScores();
+    const dessert = findWinnerDessert(results);
+
+    // Display the winning pastry
+    const resultTitle = document.getElementById('result-title');    
+    resultTitle.innerText = dessert.name;
+    
+    const resultImage = document.getElementById('result-img');    
+    resultImage.src = dessert.image;
+    resultImage.alt = dessert.name;
+
+    // Calculate matching percentage
+    const resultMatch = document.getElementById('result-match');    
+    const percentage = dessert.finalScore / questions.length *100;
+    resultMatch.innerText = "Correspondance: " + percentage + "%";
+
+    // Button to display the recipe
+    const resultRecipeButton = document.getElementById('recipe-btn');
+    resultRecipeButton.onclick = () => showRecipe(dessert.id);
+}
+
+function calculateScores()
+{
+    // Count the matching tags for each pastry
+    const results = desserts.map(dessert => {
+        let score = 0;
+        userChoices.forEach(choice => {
+            if (dessert.tags.includes(choice)) {
+                score++;
+            }
+        });
+        return { ...dessert, finalScore: score };
+    });
+
+    return results;
+}
+
+function findWinnerDessert(results)
+{
+    // Sort all pastries by their score
+    results.sort((a, b) => b.finalScore - a.finalScore);
+
+    // Winner has the highest score
+    const winner = results[0];
+
+    return winner;
+}
+
+function showRecipe(dessertId) 
+{
+    console.log("showRecipe called with parameter: " + dessertId);
 }

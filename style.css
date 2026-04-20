@@ -29,6 +29,13 @@ p {
     font-size: 1.2rem;
 }
 
+.container {
+    max-width: 900px;
+    margin: 140px auto 100px;
+    text-align: center;
+    padding: 20px;
+}
+
 .hidden { display: none; }
 
 /* HEADER */
@@ -65,13 +72,6 @@ header {
 }
 
 /* QUIZ SECTION */
-.quiz {
-    max-width: 900px;
-    margin: 140px auto 100px;
-    text-align: center;
-    padding: 20px;
-}
-
 .quiz-card {
     background: var(--cream);
     padding: 40px;
@@ -92,4 +92,26 @@ header {
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+/* RESULT SECTION */
+#results.container {
+    margin-top: 40px; 
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 200px;
+}
+.recipe-btn {
+    background-color: var(--dusty-rose);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 10px;
 }
