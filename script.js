@@ -19,6 +19,8 @@ function startQuiz()
     
     // Hide all the other sections
     document.getElementById('hero').classList.add('hidden');
+    document.getElementById('results').classList.add('hidden');
+    document.getElementById('recipe-display').classList.add('hidden');
 
     showQuestion();
 }
@@ -115,7 +117,27 @@ function findWinnerDessert(results)
     return winner;
 }
 
-function showRecipe(dessertId) 
-{
-    console.log("showRecipe called with parameter: " + dessertId);
+function showRecipe(dessertId) {
+    const selectedDessert = desserts.find(d => d.id === dessertId);
+
+    // Display the recipe section
+    document.getElementById('results').classList.add('hidden');
+    const displayZone = document.getElementById('recipe-display'); 
+    displayZone.classList.remove('hidden');
+
+    // Display the ingredients + the recipe steps
+    displayZone.innerHTML = `
+        <div class="recipe-container">
+            <h2>${selectedDessert.name}</h2>
+            <img src="${selectedDessert.image}" alt="${selectedDessert.name}" style="width:100%; max-width:300px; border-radius:15px;">
+            
+            <h3>Ingrédients</h3>
+            <ul>${selectedDessert.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>
+
+            <h3>Préparation</h3>
+            <ol>${selectedDessert.recipe.map(step => `<li>${step}</li>`).join('')}</ol>
+
+            <button onclick="startQuiz()" class="start-again-btn">Start again</button>
+        </div>
+    `;
 }

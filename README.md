@@ -8,7 +8,7 @@ An interactive web application that helps you decide what pastry to bake based o
 - [x] Quiz Interface: Display questions and answers
 - [x] Scoring Engine: Logic to track user choices and calculate the pastry match
 - [x] Result View: Final reveal screen with pastry images
-- [ ] Recipe: Button to display full recipe of chosen pastry
+- [x] Recipe: Button to display full recipe of chosen pastry
 - [ ] Final polished UI with animations
 
 ## Tech Stack

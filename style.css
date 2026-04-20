@@ -115,3 +115,52 @@ header {
     cursor: pointer;
     margin-top: 10px;
 }
+
+/* RECIPE SECTION */
+#recipe-display {
+    text-align: left;
+}
+
+.recipe-container {
+    background: var(--cream);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.recipe-container h2 {
+    color: var(--dark-rose);
+    font-size: 2.5rem;
+    margin-top: 0;
+}
+
+.recipe-container h3 {
+    color: var(--dusty-rose);
+}
+
+.recipe-container li {
+    margin-bottom: 10px;
+}
+
+.start-again-btn {
+    background-color: var(--dusty-rose);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 30px auto 0;
+}
+
+.recipe-container img {
+    display: block;
+    margin: 20px auto;
+}
+
+#results.container, 
+#recipe-display.container {
+    margin-top: 40px; 
+}
