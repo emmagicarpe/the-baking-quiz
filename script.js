@@ -3,6 +3,31 @@
 const startBtn = document.getElementById('start-btn');
 startBtn.addEventListener('click', () => startQuiz());
 
+// Go back to landing page when clicking on the logo
+const logo = document.getElementById("logo");
+
+if (logo) {
+    logo.addEventListener("click", function() {
+        document.getElementById('quiz').classList.add('hidden');
+        document.getElementById('results').classList.add('hidden');
+        document.getElementById('recipe-display').classList.add('hidden');
+
+        document.getElementById('hero').classList.remove('hidden');
+        
+        questionIndex = 0;
+        userChoices = [];
+    });
+}
+
+// Start the quiz when clicking on "Quiz"
+const navQuizLink = document.getElementById("nav-quiz");
+if (navQuizLink) {
+    navQuizLink.addEventListener("click", function(event) {
+        event.preventDefault();
+        startQuiz();
+    });
+}
+
 /* FUNCTIONS */
 
 // Keep track of the questions asked and the answers

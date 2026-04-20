@@ -1,11 +1,11 @@
 /* VARIABLES & FONTS */
 :root {
-    --text-color: #5D4037;
-    --pale: #FFFFFF80;
     --cream: #FFF9FB;
+    --pale-pink: #fadce5;
     --nude-pink: #fabdd1;
-    --dusty-rose: #F06292;
-    --dark-rose: #C2185B;
+    --dusty-pink: #F06292;
+    --dark-pink: #C2185B;
+    --text-color: #5D4037;
 }
 
 /* BASE LAYOUT */
@@ -18,6 +18,8 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    padding-top: 80px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -36,22 +38,36 @@ p {
     padding: 20px;
 }
 
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
 .hidden { display: none; }
 
 /* HEADER */
 header {
-    background-color: var(--pale);
-    padding: 20px 0;
-    width: 100%;
-    text-align: left;
-    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: var(--pale-pink);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .logo {
-    color: var(--dark-rose);
+    color: var(--dark-pink);
     font-size: 2.5rem;
     font-weight: bold;
     margin-left: 30px;
+    cursor: pointer;
 }
 
 /* HERO SECTION */
@@ -62,7 +78,7 @@ header {
 }
 
 #start-btn {
-    background-color: var(--dusty-rose);
+    background-color: var(--dusty-pink);
     color: white;
     border: none;
     padding: 15px 40px;
@@ -86,7 +102,7 @@ header {
 }
 
 .option-btn {
-    background: var(--dusty-rose);
+    background: var(--dusty-pink);
     color : white;
     border : none;
     padding: 15px;
@@ -106,7 +122,7 @@ header {
     width: 200px;
 }
 .recipe-btn {
-    background-color: var(--dusty-rose);
+    background-color: var(--dusty-pink);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -130,13 +146,13 @@ header {
 }
 
 .recipe-container h2 {
-    color: var(--dark-rose);
+    color: var(--dark-pink);
     font-size: 2.5rem;
     margin-top: 0;
 }
 
 .recipe-container h3 {
-    color: var(--dusty-rose);
+    color: var(--dusty-pink);
 }
 
 .recipe-container li {
@@ -144,7 +160,7 @@ header {
 }
 
 .start-again-btn {
-    background-color: var(--dusty-rose);
+    background-color: var(--dusty-pink);
     color: white;
     border: none;
     padding: 15px 40px;
@@ -160,7 +176,6 @@ header {
     margin: 20px auto;
 }
 
-#results.container, 
 #recipe-display.container {
     margin-top: 40px; 
 }
