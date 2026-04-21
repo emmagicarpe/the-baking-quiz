@@ -179,3 +179,37 @@ header {
 #recipe-display.container {
     margin-top: 40px; 
 }
+
+/* ALL RECIPES SECTION */
+#all-recipes.container:not(.hidden) {
+    display: block !important;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#recipes-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 25px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+#recipes-grid .card {
+    width: 100% !important; 
+    box-sizing: border-box;
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.img-container img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}

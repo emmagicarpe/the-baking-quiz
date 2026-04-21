@@ -8,10 +8,7 @@ const logo = document.getElementById("logo");
 
 if (logo) {
     logo.addEventListener("click", function() {
-        document.getElementById('quiz').classList.add('hidden');
-        document.getElementById('results').classList.add('hidden');
-        document.getElementById('recipe-display').classList.add('hidden');
-
+        hideAllSections();
         document.getElementById('hero').classList.remove('hidden');
         
         questionIndex = 0;
@@ -28,6 +25,16 @@ if (navQuizLink) {
     });
 }
 
+// Display all the recipes when clicking on "Recipes"
+const navRecipesLink = document.getElementById("nav-recipes");
+
+if (navRecipesLink) {
+    navRecipesLink.addEventListener("click", function(event) {
+        event.preventDefault();
+        showAllRecipes();
+    });
+}
+
 /* FUNCTIONS */
 
 // Keep track of the questions asked and the answers
@@ -40,12 +47,8 @@ function startQuiz()
     userChoices = [];
 
     // Display the questions
+    hideAllSections();
     document.getElementById('quiz').classList.remove('hidden');
-    
-    // Hide all the other sections
-    document.getElementById('hero').classList.add('hidden');
-    document.getElementById('results').classList.add('hidden');
-    document.getElementById('recipe-display').classList.add('hidden');
 
     showQuestion();
 }
@@ -90,8 +93,8 @@ function handleOptionClick(answer)
 
 function showResults()
 {
-    // Hide previous section and display the result
-    document.getElementById('quiz').classList.add('hidden');
+    // Display the result
+    hideAllSections();
     document.getElementById('results').classList.remove('hidden');
 
     const results = calculateScores();
@@ -146,11 +149,11 @@ function showRecipe(dessertId) {
     const selectedDessert = desserts.find(d => d.id === dessertId);
 
     // Display the recipe section
-    document.getElementById('results').classList.add('hidden');
-    const displayZone = document.getElementById('recipe-display'); 
-    displayZone.classList.remove('hidden');
+    hideAllSections();
+    document.getElementById('recipe-display').classList.remove('hidden');
 
     // Display the ingredients + the recipe steps
+    const displayZone = document.getElementById('recipe-display');
     displayZone.innerHTML = `
         <div class="recipe-container">
             <h2>${selectedDessert.name}</h2>
@@ -165,4 +168,29 @@ function showRecipe(dessertId) {
             <button onclick="startQuiz()" class="start-again-btn">Start again</button>
         </div>
     `;
+}
+
+function showAllRecipes() {
+    hideAllSections();
+    document.getElementById('all-recipes').classList.remove('hidden');
+    const allRecipesSection = document.getElementById('all-recipes');
+
+    const grid = document.getElementById('recipes-grid');
+    // Display the name and picture of each recipe
+    grid.innerHTML = desserts.map(dessert => `
+        <div class="card">
+            <div class="img-container">
+                <img src="${dessert.image}" alt="${dessert.name}">
+            </div>
+            <h3>${dessert.name}</h3>
+            <button class="recipe-btn" onclick="showRecipe('${dessert.id}')">See the recipe</button>
+        </div>
+    `).join('');
+}
+
+function hideAllSections() {
+    const sections = document.querySelectorAll('main > section');
+    sections.forEach(section => {
+        section.classList.add('hidden');
+    });
 }
