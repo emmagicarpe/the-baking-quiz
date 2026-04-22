@@ -55,6 +55,11 @@ function startQuiz()
 
 function showQuestion()
 {
+    // Manage progress bar
+    const progressFill = document.getElementById('progress-fill');
+    const progressPercent = ((questionIndex) / questions.length) * 100;
+    progressFill.style.width = progressPercent + "%";
+    
     // Find current question to ask and display it
     const currentQuestion = questions[questionIndex];
     const questionElement = document.getElementById('question-text');
@@ -111,11 +116,11 @@ function showResults()
     // Calculate matching percentage
     const resultMatch = document.getElementById('result-match');    
     const percentage = dessert.finalScore / questions.length *100;
-    resultMatch.innerText = "Correspondance: " + percentage + "%";
+    resultMatch.innerText = "Match: " + percentage + "%";
 
     // Button to display the recipe
     const resultRecipeButton = document.getElementById('recipe-btn');
-    resultRecipeButton.onclick = () => showRecipe(dessert.id);
+    resultRecipeButton.onclick = () => showRecipe(dessert.id, true);
 }
 
 function calculateScores()
@@ -145,7 +150,7 @@ function findWinnerDessert(results)
     return winner;
 }
 
-function showRecipe(dessertId) {
+function showRecipe(dessertId, fromQuiz = false) {
     const selectedDessert = desserts.find(d => d.id === dessertId);
 
     // Display the recipe section
@@ -154,18 +159,23 @@ function showRecipe(dessertId) {
 
     // Display the ingredients + the recipe steps
     const displayZone = document.getElementById('recipe-display');
+    
+    const backButton = fromQuiz 
+        ? `<button onclick="startQuiz()" class="start-again-btn">Start again</button>` 
+        : "";
+
     displayZone.innerHTML = `
         <div class="recipe-container">
             <h2>${selectedDessert.name}</h2>
-            <img src="${selectedDessert.image}" alt="${selectedDessert.name}" style="width:100%; max-width:300px; border-radius:15px;">
+            <img src="${selectedDessert.image}" alt="${selectedDessert.name}">
             
-            <h3>Ingrédients</h3>
+            <h3>Ingredients</h3>
             <ul>${selectedDessert.ingredients.map(ing => `<li>${ing}</li>`).join('')}</ul>
 
-            <h3>Préparation</h3>
+            <h3>Preparation</h3>
             <ol>${selectedDessert.recipe.map(step => `<li>${step}</li>`).join('')}</ol>
 
-            <button onclick="startQuiz()" class="start-again-btn">Start again</button>
+            ${backButton}
         </div>
     `;
 }
@@ -193,4 +203,5 @@ function hideAllSections() {
     sections.forEach(section => {
         section.classList.add('hidden');
     });
+    document.getElementById('recipe-display').innerHTML = "";
 }
