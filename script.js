@@ -100,27 +100,35 @@ function showResults()
 {
     // Display the result
     hideAllSections();
-    document.getElementById('results').classList.remove('hidden');
+    const resultsSection = document.getElementById('results');
+    resultsSection.classList.remove('hidden');
 
-    const results = calculateScores();
-    const dessert = findWinnerDessert(results);
+    // Calculate pastries with highest scores
+    const allResults = calculateScores();
+    const topThree = findWinnerDesserts(allResults);
 
-    // Display the winning pastry
-    const resultTitle = document.getElementById('result-title');    
-    resultTitle.innerText = dessert.name;
-    
-    const resultImage = document.getElementById('result-img');    
-    resultImage.src = dessert.image;
-    resultImage.alt = dessert.name;
+    // Display the 3 winning pastries
+    const container = document.getElementById('results-container');
 
-    // Calculate matching percentage
-    const resultMatch = document.getElementById('result-match');    
-    const percentage = dessert.finalScore / questions.length *100;
-    resultMatch.innerText = "Match: " + percentage + "%";
-
-    // Button to display the recipe
-    const resultRecipeButton = document.getElementById('recipe-btn');
-    resultRecipeButton.onclick = () => showRecipe(dessert.id, true);
+    resultsSection.innerHTML = `
+        <h1>Our Top Picks for You</h1>
+        <div id="results-grid">
+            ${topThree.map(dessert => {
+                const percentage = (dessert.finalScore / questions.length) * 100;
+                return `
+                    <div class="card">
+                        <div class="img-container">
+                            <img src="${dessert.image}" alt="${dessert.name}">
+                        </div>
+                        <h3>${dessert.name}</h3>
+                        <p style="font-weight: bold; color: var(--dusty-pink);">Match: ${percentage.toFixed(1)}%</p>
+                        <button class="recipe-btn" onclick="showRecipe('${dessert.id}', true)">See Recipe</button>
+                    </div>
+                `;
+            }).join('')}
+        </div>
+        <button onclick="startQuiz()" class="start-again-btn">Start Again</button>
+    `;
 }
 
 function calculateScores()
@@ -139,15 +147,12 @@ function calculateScores()
     return results;
 }
 
-function findWinnerDessert(results)
-{
+function findWinnerDesserts(results) {
     // Sort all pastries by their score
     results.sort((a, b) => b.finalScore - a.finalScore);
-
-    // Winner has the highest score
-    const winner = results[0];
-
-    return winner;
+    
+    // Winners have the highest score
+    return results.slice(0, 3);
 }
 
 function showRecipe(dessertId, fromQuiz = false) {

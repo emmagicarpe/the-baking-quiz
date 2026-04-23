@@ -122,6 +122,14 @@ header {
     margin-top: 40px; 
 }
 
+#results-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
 #results .card {
     margin: 0 auto;
     display: block;
