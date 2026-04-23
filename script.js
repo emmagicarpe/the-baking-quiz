@@ -129,6 +129,15 @@ function showResults()
         </div>
         <button onclick="startQuiz()" class="start-again-btn">Start Again</button>
     `;
+
+    // Shining animation on the results
+    const resultCards = document.querySelectorAll('#results-grid .card');
+    
+    resultCards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('shine-anim');
+        }, index * 200); // one after the other
+    });
 }
 
 function calculateScores()
